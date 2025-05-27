@@ -30,3 +30,21 @@ def second_category():
 @pytest.fixture
 def product():
     return Product('Lada', 'From Russia', 500000.00, 10),
+
+
+@pytest.fixture
+def read_data():
+    return [
+        {
+            "name": "Mobile",
+            "description": "True",
+            "products": [
+                {
+                    "name": "name1",
+                    "description": "desc1",
+                    "price": 100.0,
+                    "quantity": 1
+                }
+            ]
+        }
+    ]
