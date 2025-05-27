@@ -2,7 +2,7 @@ from unittest.mock import patch, MagicMock
 
 import pytest
 
-from src.utils import get_data_from_json
+from src.utils import get_data_from_json, create_objects_from_data
 
 
 @patch("json.load")
@@ -16,4 +16,13 @@ def test_get_data_from_json(mock_open, mock_load, read_data):
 
     assert get_data_from_json() == read_data
 
+
 def test_create_objects_from_data(read_data):
+    obj = create_objects_from_data(read_data)[0]
+    assert obj.name == 'Mobile'
+    assert obj.description == "description_test"
+    assert obj.products[0].name == "name_test"
+    assert obj.products[0].description == "desc1"
+
+    assert obj.category_count == 3
+    assert obj.product_count == 6
