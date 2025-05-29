@@ -1,7 +1,6 @@
-
-
 class Category:
-    """ Класс для категорий товаров """
+    """Класс для категорий товаров"""
+
     name: str
     description: str
     products: list
@@ -16,5 +15,3 @@ class Category:
 
         Category.category_count += 1
         Category.product_count += len(products)
-
-
