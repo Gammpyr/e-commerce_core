@@ -1,14 +1,13 @@
+from typing import Any
+
+
 class Category:
     """Класс для категорий товаров"""
-
-    name: str
-    description: str
-    products: list
 
     category_count = 0
     product_count = 0
 
-    def __init__(self, name, description, products):
+    def __init__(self, name: str, description: str, products: list):
         self.name = name
         self.description = description
         self.__products = products
@@ -16,11 +15,19 @@ class Category:
         Category.category_count += 1
         Category.product_count += len(products)
 
-    def add_product(self, new_product):
-        self.__products.append(new_product)
+    def add_product(self, adding_product: Any) -> None:
+        """Добавляет новый продукт в категорию"""
+        self.__products.append(adding_product)
+        Category.product_count += 1
 
     @property
-    def products(self):
-        for product in self.__products:
-            print(f'{product.name}, {product.price} руб. Остаток: {product.quantity} шт.')
+    def products(self) -> list:
+        """Геттер для products"""
+        return self.__products
 
+    @property
+    def get_list_products(self) -> list:
+        result = []
+        for product in self.products:
+            result.append(f"{product.name}, {product.price} руб. Остаток: {product.quantity} шт.")
+        return result
