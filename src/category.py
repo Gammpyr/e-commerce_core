@@ -1,5 +1,7 @@
 from typing import Any
 
+from src.product import Product
+
 
 class Category:
     """Класс для категорий товаров"""
@@ -17,8 +19,9 @@ class Category:
 
     def add_product(self, adding_product: Any) -> None:
         """Добавляет новый продукт в категорию"""
-        self.__products.append(adding_product)
-        Category.product_count += 1
+        if isinstance(adding_product, Product):
+            self.__products.append(adding_product)
+            Category.product_count += 1
 
     @property
     def products(self) -> list:
