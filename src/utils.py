@@ -1,11 +1,12 @@
 import json
 import os
+from typing import Any
 
 from src.category import Category
 from src.product import Product
 
 
-def get_data_from_json(filename: str = "products.json") -> list[dict]:
+def get_data_from_json(filename: str = "products.json") -> Any:
     """Возвращает данные из указанного json-файла"""
     full_path = os.path.join("./data/", filename)
     abs_path = os.path.abspath(full_path)
