@@ -40,3 +40,20 @@ class Category:
         for product in self.products:
             result.append(str(product))
         return result
+
+class ProductCatalog:
+    """Перебирает товары одной категории"""
+
+    def __init__(self, category):
+        self.__products = category.products
+
+    def __iter__(self):
+        self.counter = -1
+        return self
+
+    def __next__(self):
+        if self.counter == len(self.__products) - 1:
+            raise StopIteration
+        self.counter += 1
+        return self.__products[self.counter]
+
