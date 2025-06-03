@@ -35,10 +35,8 @@ def test_test_category_magic_str(first_category):
 
 
 def test_product_catalog(first_category):
-    product_list = ProductCatalog(first_category)
+
     expected = ['LG', 'Sony', 'Moto']
-    result = []
-    for obj in product_list:
-        result.append(obj.name)
+    result = [obj.name for obj in ProductCatalog(first_category)]
 
     assert result == expected
