@@ -32,5 +32,11 @@ class Category:
     def get_list_products(self) -> list:
         result = []
         for product in self.products:
-            result.append(f"{product.name}, {product.price} руб. Остаток: {product.quantity} шт.")
+            result.append(str(product))
         return result
+
+    def __str__(self):
+        quantity = 0
+        for product in self.products:
+            quantity += product.quantity
+        return f'{self.name}, количество продуктов: {quantity} шт.'
