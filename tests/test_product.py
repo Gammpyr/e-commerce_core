@@ -1,3 +1,5 @@
+from unittest.mock import patch
+
 from src.product import Product
 
 
@@ -30,3 +32,17 @@ def test_product_price(product):
     assert product.price == 500000.0
     product.price = 600000.0
     assert product.price == 600000.0
+
+@patch('src.product.input')
+def test_product_price_setter(mock_input, product):
+    mock_input.return_value = 'n'
+    assert product.price == 500000
+
+    mock_input.return_value = 'y'
+    product.price = 400000
+    assert product.price == 400000
+
+
+def test_product_add(product, product2):
+    assert product + product2 == 7_400_000
+

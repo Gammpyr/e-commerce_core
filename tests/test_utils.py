@@ -1,5 +1,6 @@
 from unittest.mock import MagicMock, patch
 
+from src.category import Category
 from src.utils import create_objects_from_data, get_data_from_json
 
 
@@ -16,11 +17,16 @@ def test_get_data_from_json(mock_open, mock_load, read_data):
 
 
 def test_create_objects_from_data(read_data):
+    Category.category_count = 0
+    Category.product_count = 0
     obj = create_objects_from_data(read_data)[0]
     assert obj.name == "Mobile"
     assert obj.description == "description_test"
     assert obj.products[0].name == "name_test"
     assert obj.products[0].description == "desc1"
+    assert obj.products[1].name == "name_test2"
+    assert obj.products[1].description == "desc2"
 
-    assert obj.category_count == 3
-    assert obj.product_count == 6
+    assert obj.category_count == 1
+    assert obj.product_count == 2
+

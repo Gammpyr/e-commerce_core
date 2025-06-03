@@ -26,3 +26,9 @@ def test_category_add_product(first_category, product):
 
 def test_category_get_list_product(first_category, product):
     assert first_category.get_list_products[0] == "LG, 1000.0 руб. Остаток: 5 шт."
+
+    first_category.category_count = 0
+    first_category.product_count = 0
+
+def test_test_category_magic_str(first_category):
+    assert str(first_category) == 'Mobile, количество продуктов: 30 шт.'
