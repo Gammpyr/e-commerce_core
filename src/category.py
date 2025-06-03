@@ -17,6 +17,12 @@ class Category:
         Category.category_count += 1
         Category.product_count += len(products)
 
+    def __str__(self):
+        quantity = 0
+        for product in self.products:
+            quantity += product.quantity
+        return f'{self.name}, количество продуктов: {quantity} шт.'
+
     def add_product(self, adding_product: Any) -> None:
         """Добавляет новый продукт в категорию"""
         if isinstance(adding_product, Product):
@@ -32,5 +38,22 @@ class Category:
     def get_list_products(self) -> list:
         result = []
         for product in self.products:
-            result.append(f"{product.name}, {product.price} руб. Остаток: {product.quantity} шт.")
+            result.append(str(product))
         return result
+
+class ProductCatalog:
+    """Перебирает товары одной категории"""
+
+    def __init__(self, category):
+        self.__products = category.products
+
+    def __iter__(self):
+        self.counter = -1
+        return self
+
+    def __next__(self):
+        if self.counter == len(self.__products) - 1:
+            raise StopIteration
+        self.counter += 1
+        return self.__products[self.counter]
+

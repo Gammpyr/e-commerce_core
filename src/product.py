@@ -15,6 +15,12 @@ class Product:
         self.__price = price
         self.quantity = quantity
 
+    def __str__(self):
+        return f'{self.name}, {self.__price} руб. Остаток: {self.quantity} шт.'
+
+    def __add__(self, other):
+        return (self.quantity * self.price) + (other.quantity * other.price)
+
     @classmethod
     def new_product(cls, product_data: dict) -> Any:
         """Создает новый объект класса. Если объект с таким именем уже существует,
@@ -24,11 +30,6 @@ class Product:
         price = product_data["price"]
         quantity = product_data["quantity"]
 
-        # if existing_products:
-        #     for ex_product in existing_products:
-        #         if name.lower() in ex_product.name.lower():
-        #             quantity += ex_product.quantity
-        #             price = max(ex_product.price, price)
         return cls(name, description, price, quantity)
 
     @property
