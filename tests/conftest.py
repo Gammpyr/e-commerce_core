@@ -4,6 +4,13 @@ from src.category import Category
 from src.product import Product
 
 
+@pytest.fixture(autouse=True)
+def reset_category_count():
+    """Сбрасывает счетчик перед каждым тестом"""
+    from src.category import Category
+    Category.category_count = 0
+
+
 @pytest.fixture
 def first_category():
     return Category(
@@ -33,6 +40,10 @@ def second_category():
 def product():
     return Product("Lada", "From Russia", 500000.00, 10)
 
+@pytest.fixture
+def product2():
+    return Product("Mazda", "From japan", 800000.00, 3)
+
 
 @pytest.fixture
 def read_data():
@@ -46,7 +57,13 @@ def read_data():
                     "description": "desc1",
                     "price": 100.0,
                     "quantity": 1,
-                }
+                },
+                {
+                    "name": "name_test2",
+                    "description": "desc2",
+                    "price": 200.0,
+                    "quantity": 2,
+                },
             ],
         }
     ]
