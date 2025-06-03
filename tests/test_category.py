@@ -1,4 +1,4 @@
-from src.category import Category
+from src.category import Category, ProductCatalog
 from src.product import Product
 
 
@@ -32,3 +32,13 @@ def test_category_get_list_product(first_category, product):
 
 def test_test_category_magic_str(first_category):
     assert str(first_category) == 'Mobile, количество продуктов: 30 шт.'
+
+
+def test_product_catalog(first_category):
+    product_list = ProductCatalog(first_category)
+    expected = ['LG', 'Sony', 'Moto']
+    result = []
+    for obj in product_list:
+        result.append(obj.name)
+
+    assert result == expected
