@@ -1,13 +1,14 @@
 import pytest
 
 from src.category import Category
+from src.lawngrass import LawnGrass
 from src.product import Product
+from src.smartphone import Smartphone
 
 
 @pytest.fixture(autouse=True)
 def reset_category_count():
     """Сбрасывает счетчик перед каждым тестом"""
-    from src.category import Category
     Category.category_count = 0
 
 
@@ -40,6 +41,7 @@ def second_category():
 def product():
     return Product("Lada", "From Russia", 500000.00, 10)
 
+
 @pytest.fixture
 def product2():
     return Product("Mazda", "From japan", 800000.00, 3)
@@ -67,3 +69,26 @@ def read_data():
             ],
         }
     ]
+
+
+@pytest.fixture
+def first_lawngrass():
+    return LawnGrass("Трава",
+                     "Красивая",
+                     100.00, 10,
+                     "Россия",
+                     "1 день",
+                     "Зелёный")
+
+
+@pytest.fixture
+def first_smartphone():
+    return Smartphone("Sony Ericsson",
+                      "Новинка",
+                      50000.00,
+                      5,
+                      "Япония",
+                      "W810i",
+                      64,
+                      "Чёрный"
+                      )
