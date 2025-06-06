@@ -4,6 +4,8 @@
 
 - [Category](src/category.py) - для категорий товаров
 - [Product](src/product.py) - для продукции
+  - [Lawngrass](src/lawngrass.py) - для Травы
+  - [Smartphone](src/smartphone.py) - для Смартфонов
 
 ### Запуск:
 Выполните команду
