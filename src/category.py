@@ -19,7 +19,7 @@ class Category:
 
     def __str__(self):
         quantity = 0
-        for product in self.products:
+        for product in self.__products:
             quantity += product.quantity
         return f'{self.name}, количество продуктов: {quantity} шт.'
 
@@ -28,16 +28,18 @@ class Category:
         if isinstance(adding_product, Product):
             self.__products.append(adding_product)
             Category.product_count += 1
+        else:
+            raise TypeError
 
     @property
-    def products(self) -> list:
+    def get_products(self) -> list:
         """Геттер для products"""
         return self.__products
 
     @property
-    def get_list_products(self) -> list:
+    def products(self) -> list:
         result = []
-        for product in self.products:
+        for product in self.__products:
             result.append(str(product))
         return result
 
@@ -45,7 +47,7 @@ class ProductCatalog:
     """Перебирает товары одной категории"""
 
     def __init__(self, category):
-        self.__products = category.products
+        self.__products = category.get_products
 
     def __iter__(self):
         self.counter = -1
