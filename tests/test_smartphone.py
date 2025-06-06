@@ -2,6 +2,7 @@ import pytest
 
 from src.smartphone import Smartphone
 
+
 def test_smartphone_init(first_smartphone):
     assert first_smartphone.name == "Sony Ericsson"
     assert first_smartphone.description == "Новинка"
@@ -11,4 +12,3 @@ def test_smartphone_init(first_smartphone):
     assert first_smartphone.model == "W810i"
     assert first_smartphone.memory == 64
     assert first_smartphone.color == "Чёрный"
-

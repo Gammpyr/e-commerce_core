@@ -29,4 +29,3 @@ def test_create_objects_from_data(read_data):
 
     assert obj.category_count == 1
     assert obj.product_count == 2
-

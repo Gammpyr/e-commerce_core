@@ -17,11 +17,11 @@ class Category:
         Category.category_count += 1
         Category.product_count += len(products)
 
-    def __str__(self):
+    def __str__(self) -> str:
         quantity = 0
         for product in self.__products:
             quantity += product.quantity
-        return f'{self.name}, количество продуктов: {quantity} шт.'
+        return f"{self.name}, количество продуктов: {quantity} шт."
 
     def add_product(self, adding_product: Any) -> None:
         """Добавляет новый продукт в категорию"""
@@ -43,19 +43,19 @@ class Category:
             result.append(str(product))
         return result
 
+
 class ProductCatalog:
     """Перебирает товары одной категории"""
 
-    def __init__(self, category):
+    def __init__(self, category: Any) -> None:
         self.__products = category.get_products
 
-    def __iter__(self):
+    def __iter__(self) -> Any:
         self.counter = -1
         return self
 
-    def __next__(self):
+    def __next__(self) -> Any:
         if self.counter == len(self.__products) - 1:
             raise StopIteration
         self.counter += 1
         return self.__products[self.counter]
-

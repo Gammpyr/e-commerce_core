@@ -73,22 +73,9 @@ def read_data():
 
 @pytest.fixture
 def first_lawngrass():
-    return LawnGrass("Трава",
-                     "Красивая",
-                     100.00, 10,
-                     "Россия",
-                     "1 день",
-                     "Зелёный")
+    return LawnGrass("Трава", "Красивая", 100.00, 10, "Россия", "1 день", "Зелёный")
 
 
 @pytest.fixture
 def first_smartphone():
-    return Smartphone("Sony Ericsson",
-                      "Новинка",
-                      50000.00,
-                      5,
-                      "Япония",
-                      "W810i",
-                      64,
-                      "Чёрный"
-                      )
+    return Smartphone("Sony Ericsson", "Новинка", 50000.00, 5, "Япония", "W810i", 64, "Чёрный")
