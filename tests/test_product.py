@@ -1,5 +1,7 @@
 from unittest.mock import patch
 
+import pytest
+
 from src.product import Product
 
 
@@ -46,3 +48,6 @@ def test_product_price_setter(mock_input, product):
 def test_product_add(product, product2):
     assert product + product2 == 7_400_000
 
+def test_product_add_product_type_error(product):
+    with pytest.raises(TypeError):
+        result = product + 10000

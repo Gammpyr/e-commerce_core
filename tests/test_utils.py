@@ -22,10 +22,10 @@ def test_create_objects_from_data(read_data):
     obj = create_objects_from_data(read_data)[0]
     assert obj.name == "Mobile"
     assert obj.description == "description_test"
-    assert obj.products[0].name == "name_test"
-    assert obj.products[0].description == "desc1"
-    assert obj.products[1].name == "name_test2"
-    assert obj.products[1].description == "desc2"
+    assert obj.get_products[0].name == "name_test"
+    assert obj.get_products[0].description == "desc1"
+    assert obj.get_products[1].name == "name_test2"
+    assert obj.get_products[1].description == "desc2"
 
     assert obj.category_count == 1
     assert obj.product_count == 2
