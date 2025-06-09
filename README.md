@@ -6,6 +6,7 @@
 - [Product](src/product.py) - для продукции
   - [Lawngrass](src/lawngrass.py) - для Травы
   - [Smartphone](src/smartphone.py) - для Смартфонов
+- [mixinlog.py](src/mixinlog.py) - выводит в консоль информацию при создании объекта
 
 ### Запуск:
 Выполните команду
