@@ -1,4 +1,4 @@
-from unittest.mock import patch
+from unittest.mock import MagicMock, patch
 
 import pytest
 
@@ -53,3 +53,16 @@ def test_product_add(product, product2):
 def test_product_add_product_type_error(product):
     with pytest.raises(TypeError):
         result = product + 10000
+
+
+def test_add_method(mock_product):
+    other = MagicMock()
+    result = mock_product + other
+    assert result == 10
+    mock_product.__add__.assert_called_once_with(other)
+
+
+def test_str_method(mock_product):
+    result = str(mock_product)
+    assert result == "Test id works"
+    mock_product.__str__.assert_called_once()

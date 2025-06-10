@@ -1,7 +1,21 @@
+from abc import ABC, abstractmethod
 from typing import Any
 
+from src.mixinlog import MixinLog
 
-class Product:
+
+class BaseProduct(ABC):
+
+    @abstractmethod
+    def __add__(self, other: Any):
+        pass
+
+    @abstractmethod
+    def __str__(self) -> Any:
+        pass
+
+
+class Product(MixinLog, BaseProduct):
     """Класс для продукции"""
 
     name: str
@@ -14,6 +28,7 @@ class Product:
         self.description = description
         self.__price = price
         self.quantity = quantity
+        super().__init__()
 
     def __str__(self) -> str:
         return f"{self.name}, {self.__price} руб. Остаток: {self.quantity} шт."

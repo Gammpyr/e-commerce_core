@@ -1,8 +1,10 @@
+from unittest.mock import MagicMock
+
 import pytest
 
 from src.category import Category
 from src.lawngrass import LawnGrass
-from src.product import Product
+from src.product import BaseProduct, Product
 from src.smartphone import Smartphone
 
 
@@ -79,3 +81,11 @@ def first_lawngrass():
 @pytest.fixture
 def first_smartphone():
     return Smartphone("Sony Ericsson", "Новинка", 50000.00, 5, "Япония", "W810i", 64, "Чёрный")
+
+
+@pytest.fixture
+def mock_product():
+    product = MagicMock(spec=BaseProduct)
+    product.__add__.return_value = 10
+    product.__str__.return_value = "Test id works"
+    return product
