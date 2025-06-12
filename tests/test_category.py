@@ -49,3 +49,10 @@ def test_product_catalog(first_category):
     result = [obj.name for obj in ProductCatalog(first_category)]
 
     assert result == expected
+
+def test_middle_price(first_category):
+    assert first_category.middle_price == 2000.00
+
+def test_middle_price_zero_div_error(first_category):
+    category_empty = Category("Пустая категория", "Категория без продуктов", [])
+    assert category_empty.middle_price == 0.0
