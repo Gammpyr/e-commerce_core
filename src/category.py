@@ -43,6 +43,18 @@ class Category:
             result.append(str(product))
         return result
 
+    @property
+    def middle_price(self):
+
+        sum_price = sum(product.price for product in self.__products)
+
+        try:
+            result = sum_price / len(self.get_products)
+        except ZeroDivisionError:
+            return 0
+
+        return round(result, 2)
+
 
 class ProductCatalog:
     """Перебирает товары одной категории"""

@@ -66,3 +66,7 @@ def test_str_method(mock_product):
     result = str(mock_product)
     assert result == "Test id works"
     mock_product.__str__.assert_called_once()
+
+def test_init_quantity_error():
+    with pytest.raises(ValueError):
+        Product('Test',"TestDescr", 1000.00, 0)
